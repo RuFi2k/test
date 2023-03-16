@@ -1,6 +1,8 @@
 import { Alert, Snackbar, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { StorageHandler } from "../utils";
 
 const useLessonListStyles = makeStyles({
   lessonBackground: {
@@ -32,11 +34,13 @@ const getBackground = (lesson, cover) => {
 // cover is used temporary to replace non-working lessons thumbnail with course cover
 export const LessonsList = ({ lessons, setActiveLesson, cover }) => {
   const classes = useLessonListStyles();
+  const { courseId } = useParams();
   const [open, setOpen] = useState(false);
 
   const handleLessonClick = (lesson) => {
     if (lesson.status !== 'locked') {
       setActiveLesson(lesson);
+      StorageHandler.updateCourseProgress(courseId, lessons.length + 1, lesson.id);
       return;
     }
 
