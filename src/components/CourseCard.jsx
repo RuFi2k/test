@@ -6,14 +6,16 @@ import { useNavigate } from "react-router-dom";
 const useCourseCardStyles = makeStyles({
   wrapper: {
     display: 'flex',
-    marginBottom: 24,
-    borderRadius: 4,
+    flexDirection: 'column',
+    width: 360,
+    borderRadius: 12,
+    overflow: 'hidden',
     border: '1px solid black',
     cursor: 'pointer',
+    background: '#efefef'
   },
   imageContainer: {
-    width: 720,
-    height: 320,
+    width: '100%',
   },
   previewImage: {
     width: '100%',
@@ -22,7 +24,6 @@ const useCourseCardStyles = makeStyles({
   },
   content: {
     padding: 18,
-    width: 720,
   },
   chip: {
     cursor: 'pointer',
